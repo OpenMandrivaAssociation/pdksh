@@ -41,7 +41,7 @@ mv %{buildroot}%{_bindir}/ksh %{buildroot}/bin/ksh
 ln -s  %{buildroot}/bin/ksh %{buildroot}%{_bindir}/ksh
 # Create symlinks for pdksh
 ln -s /bin/ksh %{buildroot}%{_bindir}/pdksh
-ln -s ksh.1 %{buildroot}%{_mandir}/man1/pdksh.1
+install -m644 ksh.1 %{buildroot}%{_mandir}/man1/pdksh.1
 
 %post
 /usr/share/rpm-helper/add-shell %{name} $1 /bin/ksh
@@ -51,7 +51,7 @@ ln -s ksh.1 %{buildroot}%{_mandir}/man1/pdksh.1
 
 %files
 %defattr(-,root,root)
-%doc LEGAL README NOTES PROJECTS NEWS BUG-REPORTS
+%doc README NOTES PROJECTS NEWS BUG-REPORTS
 /bin/ksh
 %{_bindir}/ksh
 %{_bindir}/pdksh
