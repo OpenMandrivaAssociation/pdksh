@@ -8,6 +8,7 @@ Version:	%{version}
 Release:	%{release}
 License:	Public Domain and BSD-like and GPLv2+
 Group:		Shells
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:		http://www.cs.mun.ca/~michael/pdksh
 Source:		ftp://ftp.cs.mun.ca/pub/pdksh/%{name}-%{version}.tar.bz2
 Patch0:		pdksh-5.2.14-manloc.patch
