@@ -1,11 +1,10 @@
 %define name	pdksh
 %define version	5.2.14
-%define release	%mkrel 20
 
 Summary:	A public domain clone of the Korn shell (ksh)
 Name:		%{name}
 Version:	%{version}
-Release:	%{release}
+Release:	%mkrel 21
 License:	Public Domain and BSD-like and GPLv2+
 Group:		Shells
 URL:		http://www.cs.mun.ca/~michael/pdksh
