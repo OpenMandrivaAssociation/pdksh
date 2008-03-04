@@ -1,9 +1,6 @@
-%define name	pdksh
-%define version	5.2.14
-
 Summary:	A public domain clone of the Korn shell (ksh)
-Name:		%{name}
-Version:	%{version}
+Name:		pdksh
+Version:	5.2.14
 Release:	%mkrel 21
 License:	Public Domain and BSD-like and GPLv2+
 Group:		Shells
@@ -12,6 +9,7 @@ Source:		ftp://ftp.cs.mun.ca/pub/pdksh/%{name}-%{version}.tar.bz2
 Patch0:		pdksh-5.2.14-manloc.patch
 # debian patch
 Patch1:		pdksh-5.2.14-debian.patch
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 The pdksh package contains PD-ksh, a clone of the Korn shell (ksh).
