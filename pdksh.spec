@@ -1,7 +1,7 @@
 Summary:	A public domain clone of the Korn shell (ksh)
 Name:		pdksh
 Version:	5.2.14
-Release:	%mkrel 21
+Release:	%mkrel 22
 License:	Public Domain and BSD-like and GPLv2+
 Group:		Shells
 URL:		http://www.cs.mun.ca/~michael/pdksh
@@ -35,7 +35,7 @@ rm -rf %{buildroot}
 # Move ksh to /bin and create a symlink in /usr/bin
 mkdir -p %{buildroot}/bin
 mv %{buildroot}%{_bindir}/ksh %{buildroot}/bin/ksh
-ln -s  %{buildroot}/bin/ksh %{buildroot}%{_bindir}/ksh
+ln -s /bin/ksh %{buildroot}%{_bindir}/ksh
 # Create symlinks for pdksh
 ln -s /bin/ksh %{buildroot}%{_bindir}/pdksh
 ln -s ksh.1 %{buildroot}%{_mandir}/man1/pdksh.1
