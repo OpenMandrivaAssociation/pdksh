@@ -1,6 +1,6 @@
 %define name	pdksh
 %define version	5.2.14
-%define release	%mkrel 20
+%define release	%mkrel 21
 
 Summary:	A public domain clone of the Korn shell (ksh)
 Name:		%{name}
