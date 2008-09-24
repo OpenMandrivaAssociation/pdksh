@@ -1,7 +1,7 @@
 Summary:	A public domain clone of the Korn shell (ksh)
 Name:		pdksh
 Version:	5.2.14
-Release:	%mkrel 24
+Release:	%mkrel 25
 License:	Public Domain and BSD-like and GPLv2+
 Group:		Shells
 URL:		http://www.cs.mun.ca/~michael/pdksh
@@ -9,6 +9,7 @@ Source:		ftp://ftp.cs.mun.ca/pub/pdksh/%{name}-%{version}.tar.bz2
 Patch0:		pdksh-5.2.14-manloc.patch
 # debian patch
 Patch1:		pdksh-5.2.14-debian.patch
+Patch2:		pdksh-child_max.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -24,6 +25,7 @@ shell.
 %setup -q
 %patch0 -p1 -b .manloc
 %patch1 -p1 -b .debian
+%patch2 -p1 -b .jobs
 
 %build
 CFLAGS="%{optflags} -D_FILE_OFFSET_BITS=64 -DDEBIAN " %configure
