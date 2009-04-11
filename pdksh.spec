@@ -10,6 +10,7 @@ Patch0:		pdksh-5.2.14-manloc.patch
 # debian patch
 Patch1:		pdksh-5.2.14-debian.patch
 Patch2:		pdksh-child_max.patch
+Patch3:		pdksh-5.2.14-fix-str-fmt.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Provides:	/usr/bin/ksh
 
@@ -27,9 +28,10 @@ shell.
 %patch0 -p1 -b .manloc
 %patch1 -p1 -b .debian
 %patch2 -p1 -b .jobs
+%patch3 -p0 -b .str
 
 %build
-CFLAGS="%{optflags} -D_FILE_OFFSET_BITS=64 -DDEBIAN " %configure
+CFLAGS="%{optflags} -D_FILE_OFFSET_BITS=64 -DDEBIAN " %configure2_5x
 %make
 
 %install
