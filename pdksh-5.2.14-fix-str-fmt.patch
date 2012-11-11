@@ -1,0 +1,177 @@
+--- c_ksh.c.str	2009-04-11 09:55:46.000000000 +0200
++++ c_ksh.c	2009-04-11 09:58:38.000000000 +0200
+@@ -558,7 +558,7 @@
+ 			break;
+ 		}
+ 		if (vflag || !ret)
+-			shprintf(newline);
++			shprintf("%s", newline);
+ 	}
+ 	return ret;
+ }
+@@ -858,7 +858,7 @@
+ 				else
+ 				    print_value_quoted(s);
+ 			    }
+-			    shprintf(newline);
++			    shprintf("%s",newline);
+ 			}
+ 			/* Only report first `element' of an array with
+ 			 * no set elements.
+@@ -949,7 +949,7 @@
+ 					shf_putc('=', shl_stdout);
+ 					print_value_quoted(ap->val.s);
+ 				}
+-				shprintf(newline);
++				shprintf("%s",newline);
+ 			}
+ 	}
+ 
+@@ -973,7 +973,7 @@
+ 					shf_putc('=', shl_stdout);
+ 					print_value_quoted(ap->val.s);
+ 				}
+-				shprintf(newline);
++				shprintf("%s",newline);
+ 			} else {
+ 				shprintf("%s alias not found\n", alias);
+ 				rv = 1;
+@@ -1220,7 +1220,7 @@
+ "Usage: kill [ -s signame | -signum | -signame ] {pid|job}...\n\
+        kill -l [exit_status]\n"
+ 			);
+-		bi_errorf(null);
++		bi_errorf("%s",null);
+ 		return 1;
+ 	}
+ 
+@@ -1241,7 +1241,7 @@
+ 			for (i = 1; i < SIGNALS; i++, p = space)
+ 				if (sigtraps[i].name)
+ 					shprintf("%s%s", p, sigtraps[i].name);
+-			shprintf(newline);
++			shprintf("%s",newline);
+ 		} else {
+ 			int w, i;
+ 			int mess_width;
+--- exec.c.str	2009-04-11 09:58:58.000000000 +0200
++++ exec.c	2009-04-11 09:59:42.000000000 +0200
+@@ -145,7 +145,7 @@
+ 				 */
+ 				if (tp && tp->type == CSHELL
+ 				    && (tp->flag & SPEC_BI))
+-					errorf(null);
++					errorf("%s",null);
+ 				/* Deal with FERREXIT, quitenv(), etc. */
+ 				goto Break;
+ 			}
+--- expr.c.str	2009-04-11 09:59:49.000000000 +0200
++++ expr.c	2009-04-11 09:59:59.000000000 +0200
+@@ -185,7 +185,7 @@
+ 		if (i == LAEXPR) {
+ 			if (error_ok == KSH_RETURN_ERROR)
+ 				return 0;
+-			errorf(null);
++			errorf("%s",null);
+ 		}
+ 		unwind(i);
+ 		/*NOTREACHED*/
+--- jobs.c.str	2009-04-11 10:00:13.000000000 +0200
++++ jobs.c	2009-04-11 10:00:26.000000000 +0200
+@@ -903,7 +903,7 @@
+ 		}
+ 		shprintf("%s%s", p->command, p->next ? "| " : null);
+ 	}
+-	shprintf(newline);
++	shprintf("%s",newline);
+ 	shf_flush(shl_stdout);
+ 	if (running)
+ 		j->state = PRUNNING;
+--- lex.c.str	2009-04-11 10:00:43.000000000 +0200
++++ lex.c	2009-04-11 10:00:54.000000000 +0200
+@@ -872,7 +872,7 @@
+ 	SH_VA_START(va, fmt);
+ 	shf_vfprintf(shl_out, fmt, va);
+ 	va_end(va);
+-	errorf(null);
++	errorf("%s",null);
+ }
+ 
+ /*
+--- main.c.str	2009-04-11 10:01:42.000000000 +0200
++++ main.c	2009-04-11 10:02:09.000000000 +0200
+@@ -563,7 +563,7 @@
+ 		  case LSHELL:
+ 			if (interactive) {
+ 				if (i == LINTR)
+-					shellf(newline);
++					shellf("%s",newline);
+ 				/* Reset any eof that was read as part of a
+ 				 * multiline command.
+ 				 */
+@@ -857,6 +857,6 @@
+ 	const char *msg;
+ {
+ 	internal_errorf(1, "alloc: %s", msg);
+-	errorf(null); /* this is never executed - keeps gcc quiet */
++	errorf("%s",null); /* this is never executed - keeps gcc quiet */
+ 	/*NOTREACHED*/
+ }
+--- misc.c.str	2009-04-11 10:02:17.000000000 +0200
++++ misc.c	2009-04-11 10:03:04.000000000 +0200
+@@ -250,7 +250,7 @@
+ 		for (i = 0; i < NELEM(options); i++)
+ 			if (Flag(i) && options[i].name)
+ 				shprintf(" -o %s", options[i].name);
+-		shprintf(newline);
++		shprintf("%s",newline);
+ 	}
+ }
+ 
+@@ -1016,7 +1016,7 @@
+ 				(go->flags & GF_NONAME) ? "" : argv[0],
+ 				(go->flags & GF_NONAME) ? "" : ": ", c);
+ 			if (go->flags & GF_ERROR)
+-				bi_errorf(null);
++				bi_errorf("%s",null);
+ 		}
+ 		return '?';
+ 	}
+@@ -1042,7 +1042,7 @@
+ 				(go->flags & GF_NONAME) ? "" : argv[0],
+ 				(go->flags & GF_NONAME) ? "" : ": ", c);
+ 			if (go->flags & GF_ERROR)
+-				bi_errorf(null);
++				bi_errorf("%s",null);
+ 			return '?';
+ 		}
+ 		go->p = 0;
+@@ -1093,7 +1093,7 @@
+ 	}
+ 	for (p = s; *p; p++) {
+ 		if (*p == '\'') {
+-			shprintf("'\\'" + 1 - inquote);
++			shprintf("%s","'\\'" + 1 - inquote);
+ 			inquote = 0;
+ 		} else {
+ 			if (!inquote) {
+--- var.c.str	2009-04-11 10:03:26.000000000 +0200
++++ var.c	2009-04-11 10:03:58.000000000 +0200
+@@ -360,7 +360,7 @@
+ 	if ((vq->flag & RDONLY) && !no_ro_check) {
+ 		warningf(TRUE, "%s: is read only", vq->name);
+ 		if (!error_ok)
+-			errorf(null);
++			errorf("%s",null);
+ 		return 0;
+ 	}
+ 	if (!(vq->flag&INTEGER)) { /* string dest */
+@@ -713,7 +713,7 @@
+ 			}
+ 		}
+ 		if (!ok)
+-		    errorf(null);
++		    errorf("%s",null);
+ 	}
+ 
+ 	if (val != NULL) {
