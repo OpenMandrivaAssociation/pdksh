@@ -43,6 +43,7 @@ mv %{buildroot}%{_bindir}/ksh %{buildroot}/bin/ksh
 ln -s /bin/ksh %{buildroot}%{_bindir}/ksh
 # Create symlinks for pdksh
 ln -s /bin/ksh %{buildroot}%{_bindir}/pdksh
+ln -s /bin/ksh %{buildroot}/bin/pdksh
 ln -s ksh.1 %{buildroot}%{_mandir}/man1/pdksh.1
 
 %post
