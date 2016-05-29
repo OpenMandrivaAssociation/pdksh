@@ -56,6 +56,7 @@ ln -s ksh.1 %{buildroot}%{_mandir}/man1/pdksh.1
 %defattr(-,root,root)
 %doc LEGAL README NOTES PROJECTS NEWS BUG-REPORTS
 /bin/ksh
+/bin/pdksh
 %{_bindir}/ksh
 %{_bindir}/pdksh
 %{_mandir}/*/*
