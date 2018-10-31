@@ -1,7 +1,7 @@
 Summary:	A public domain clone of the Korn shell (ksh)
 Name:		pdksh
 Version:	5.2.14
-Release:	41
+Release:	42
 License:	Public Domain and BSD-like and GPLv2+
 Group:		Shells
 URL:		http://www.cs.mun.ca/~michael/pdksh
