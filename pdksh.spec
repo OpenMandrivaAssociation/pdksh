@@ -4,7 +4,7 @@ Version:	5.2.14
 Release:	43
 License:	Public Domain and BSD-like and GPLv2+
 Group:		Shells
-URL:		http://www.cs.mun.ca/~michael/pdksh
+URL:		https://basic-converter.org/pdksh/
 Source:		ftp://ftp.cs.mun.ca/pub/pdksh/%{name}-%{version}.tar.bz2
 Patch0:		pdksh-5.2.14-manloc.patch
 # debian patch
