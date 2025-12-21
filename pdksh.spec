@@ -13,6 +13,7 @@ Patch2:		pdksh-child_max.patch
 Patch3:		pdksh-5.2.14-fix-str-fmt.patch
 Provides:	/usr/bin/ksh
 
+BuildRequires:	make
 %description
 The pdksh package contains PD-ksh, a clone of the Korn shell (ksh).
 The ksh shell is a command interpreter intended for both interactive
